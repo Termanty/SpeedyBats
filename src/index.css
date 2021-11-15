@@ -1,13 +1,122 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(#c3d9ff, #679efc) no-repeat scroll;
+  height: 100vh;
+}
+
+.App {
+  width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1,
+h2 {
+  margin: 20px;
+}
+
+.speed-buttons button {
+  margin: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.btn-1 {
+  background: rgb(114, 0, 0);
+}
+
+.glow-1 {
+  width: 120px;
+  height: 120px;
+  background: rgb(255, 67, 67);
+}
+
+.btn-2 {
+  background: rgb(0, 79, 0);
+}
+
+.glow-2 {
+  background: rgb(0, 255, 0);
+}
+
+.btn-3 {
+  background: rgb(0, 0, 91);
+}
+
+.glow-3 {
+  background: rgb(47, 146, 252);
+}
+
+.btn-4 {
+  background: rgb(182, 100, 0);
+}
+
+.glow-4 {
+  background: rgb(255, 237, 45);
+}
+
+.control {
+  padding: 1rem 2rem;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+.overlay {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-image: radial-gradient(
+    rgba(255, 0, 0, 0.194),
+    rgba(255, 0, 0, 0.831)
+  );
+}
+
+.game-over {
+  position: fixed;
+  width: 50%;
+  height: 200px;
+  top: 250px;
+  left: calc((100vw - 50%) / 2);
+  border-radius: 5px;
+  z-index: 1;
+  background-color: white;
+}
+
+.game-over button {
+  float: right;
+  margin: 20px;
+  padding: 1rem;
+  border: 1px solid lightcoral;
+  border-radius: 5px;
+}
+
+.game-over h2 {
+  display: block;
+  text-align: center;
 }
