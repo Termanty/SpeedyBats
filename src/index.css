@@ -1,16 +1,4 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+@import url("https://fonts.googleapis.com/css2?family=Wallpoet&display=swap");
 
 * {
   margin: 0;
@@ -19,8 +7,24 @@ code {
 }
 
 body {
-  background: linear-gradient(#c3d9ff, #679efc) no-repeat scroll;
   height: 100vh;
+  height: 100vh;
+  background: linear-gradient(
+      93deg,
+      #050b06,
+      #003a07,
+      #050b06,
+      #003a07,
+      #050b06,
+      #003a07,
+      #050b06
+    )
+    no-repeat scroll;
+  height: 100vh;
+  color: rgb(28, 210, 0);
+  font-family: "Wallpoet", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
@@ -29,59 +33,45 @@ body {
   text-align: center;
 }
 
-h1,
+h1 {
+  padding-top: 60px;
+  font-size: 3rem;
+}
+
 h2 {
-  margin: 20px;
+  margin: 40px;
 }
 
 .speed-buttons button {
-  margin: 20px;
+  margin: 30px 20px;
   width: 150px;
   height: 150px;
+  border: none;
   border-radius: 50%;
+  font-size: 2rem;
+  background-color: rgb(0, 97, 0);
+  background-image: url("bats.svg");
+  background-size: 40%;
 }
 
-.btn-1 {
-  background: rgb(114, 0, 0);
+.speed-buttons button:hover {
+  border: none;
+  box-shadow: none;
 }
 
-.glow-1 {
-  width: 120px;
-  height: 120px;
-  background: rgb(255, 67, 67);
-}
-
-.btn-2 {
-  background: rgb(0, 79, 0);
-}
-
-.glow-2 {
-  background: rgb(0, 255, 0);
-}
-
-.btn-3 {
-  background: rgb(0, 0, 91);
-}
-
-.glow-3 {
-  background: rgb(47, 146, 252);
-}
-
-.btn-4 {
-  background: rgb(182, 100, 0);
-}
-
-.glow-4 {
-  background: rgb(255, 237, 45);
+.speed-buttons .glow {
+  background-color: rgb(30, 223, 0);
+  box-shadow: 0 0 15px 5px rgba(30, 223, 0, 0.9);
 }
 
 .control {
   padding: 1rem 2rem;
   margin: 15px;
   border-radius: 10px;
+  background-color: rgb(28, 210, 00);
 }
 
-.overlay {
+.overlay1 {
   display: block;
   position: fixed;
   z-index: 1;
@@ -92,31 +82,63 @@ h2 {
   height: 100%;
   overflow: auto;
   background-image: radial-gradient(
-    rgba(255, 0, 0, 0.194),
-    rgba(255, 0, 0, 0.831)
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 125, 15, 0.2),
+    rgba(0, 0, 0, 0.8)
+  );
+}
+
+.overlay2 {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 125, 15, 0.1)
   );
 }
 
 .game-over {
   position: fixed;
   width: 50%;
-  height: 200px;
+  height: 300px;
   top: 250px;
   left: calc((100vw - 50%) / 2);
-  border-radius: 5px;
+  border: 5px dashed rgb(34, 255, 0);
+  border-radius: 20%;
   z-index: 1;
-  background-color: white;
-}
-
-.game-over button {
-  float: right;
-  margin: 20px;
-  padding: 1rem;
-  border: 1px solid lightcoral;
-  border-radius: 5px;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.3)
+  );
+  color: rgb(34, 255, 0);
+  opacity: 0.7;
 }
 
 .game-over h2 {
   display: block;
+  width: 240px;
+  margin: 20px auto;
+  font-size: 2rem;
+  display: block;
   text-align: center;
+  z-index: 2;
+  background-color: black;
+  opacity: 1;
+}
+
+.continue {
+  margin: 20px;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: rgb(34, 255, 0);
 }

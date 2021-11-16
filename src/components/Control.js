@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Control = ({ handler, style }) => {
-  const classes = "control " + style;
-  const text = style.toUpperCase();
+const Control = ({ handler, btnType }) => {
+  const classes = "control " + btnType;
+  const text = btnType.toUpperCase();
   return (
     <button className={classes} onClick={handler}>
       {text}

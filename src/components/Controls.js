@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Control from "./Control";
 
 const Controls = ({ startHandler, stopHandler }) => {
   return (
     <div className="controls">
-      <Control handler={startHandler} style="start" />
-      <Control handler={stopHandler} style="stop" />
+      <Control handler={startHandler} btnType="start" />
+      <Control handler={stopHandler} btnType="stop" />
     </div>
   );
 };

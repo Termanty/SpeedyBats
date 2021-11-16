@@ -2,24 +2,27 @@ import { Component } from "react";
 import GameOver from "./components/GameOver";
 import SpeedButtons from "./components/SpeedButtons";
 import Controls from "./components/Controls";
+import Stats from "./components/Stats";
+import { db } from "./firebase";
+import { collection, getDocs, addDoc, Timestamp } from "firebase/firestore";
 
 class App extends Component {
   state = {
     running: false,
     clickcount: 0,
     moves: [],
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    showGameOver: false,
+    active: [false, false, false, false],
+    showPopUp: false,
+    results: [],
+    name: "",
   };
 
   clickID = null;
+  resultsCollectionRef = collection(db, "results");
 
   gameOver = () => {
     if (this.clickID) clearTimeout(this.clickID);
-    this.setState({ running: false, showGameOver: "show" });
+    this.setState({ running: false, showPopUp: "showGameOver" });
   };
 
   resetGame = () => {
@@ -28,31 +31,33 @@ class App extends Component {
       running: false,
       clickcount: 0,
       moves: [],
-      showGameOver: false,
+      showPopUp: false,
     });
   };
 
-  removeColor = (btn) => {
-    this.setState({ [btn]: "" });
-  };
-
-  clearGlowFromButton = (btn) => {
-    return () => this.setState({ [btn]: "" });
+  setActive = (btn, activity) => {
+    const newArray = this.state.active.slice();
+    newArray[btn] = activity;
+    return newArray;
   };
 
   run = (delay, prevBtn = 0) => {
     if (!this.state.running) return;
     let btn;
     do {
-      btn = Math.ceil(Math.random() * 4);
+      btn = Math.floor(Math.random() * 4);
     } while (btn === prevBtn);
-
     this.setState({
       moves: this.state.moves.concat([btn]),
-      [btn]: "glow-" + btn,
+      active: this.setActive(btn, true),
     });
+    console.log(btn);
+    console.log(this.state);
     delay = delay * 0.9;
-    setTimeout(this.clearGlowFromButton(btn), delay * 1.8);
+    setTimeout(
+      () => this.setState({ active: this.setActive(btn, false) }),
+      delay * 1.8
+    );
     setTimeout(() => {
       this.run(delay, btn);
     }, 1000);
@@ -60,7 +65,6 @@ class App extends Component {
 
   startHandler = () => {
     if (this.state.running) return;
-    console.log("Game starting");
     this.setState({ running: true });
     this.clickID = setTimeout(() => {
       this.gameOver();
@@ -88,25 +92,78 @@ class App extends Component {
     this.setState({ clickcount: clicks + 1 });
   };
 
-  closeBtnHandler = () => {
-    console.log("close button");
+  continueBtnHandler = () => {
+    if (this.state.showPopUp === "showGameOver") {
+      this.setState({
+        showPopUp: "showStats",
+      });
+      return;
+    }
     this.resetGame();
   };
 
+  componentDidMount() {
+    this.getResultsFromDB();
+  }
+
+  getResultsFromDB = async () => {
+    const data = await getDocs(this.resultsCollectionRef);
+    this.setState({
+      results: data.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
+    });
+  };
+
+  addResultToDB = async () => {
+    await addDoc(this.resultsCollectionRef, {
+      name: this.state.name,
+      score: this.state.clickcount * 10,
+      date: Timestamp.fromDate(new Date()),
+    });
+    this.getResultsFromDB();
+  };
+
+  onSubmitHandler = (event) => {
+    event.preventDefault();
+    this.addResultToDB();
+    this.resetGame();
+  };
+
+  onChange = (e) => this.setState({ name: e.target.value });
+
   render() {
     const score = this.state.clickcount * 10;
-
     return (
       <div className="App">
         <h1>Speed Game</h1>
         <h2>Your score is: {score}</h2>
-        <SpeedButtons handler={this.clickHandler} style={this.state} />
+        <SpeedButtons handler={this.clickHandler} active={this.state.active} />
         <Controls
           startHandler={this.startHandler}
           stopHandler={this.stopHandler}
         />
-        {this.state.showGameOver && (
-          <GameOver handler={this.closeBtnHandler} score={score} />
+
+        {this.state.showPopUp && (
+          <>
+            <div className="overlay1"></div>
+            <div className="overlay2"></div>
+          </>
+        )}
+        {this.state.showPopUp === "showGameOver" && (
+          <GameOver
+            handler={this.continueBtnHandler}
+            score={score}
+            results={this.state.results}
+            submit={this.onSubmitHandler}
+            name={this.state.name}
+            change={this.onChange}
+          />
+        )}
+        {this.state.showPopUp === "showStats" && (
+          <Stats
+            handler={this.continueBtnHandler}
+            score={score}
+            results={this.state.results}
+          />
         )}
       </div>
     );
