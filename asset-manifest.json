@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/SpeedyBats/static/css/main.69c9f618.chunk.css",
+    "main.js": "/SpeedyBats/static/js/main.983f5c2d.chunk.js",
+    "main.js.map": "/SpeedyBats/static/js/main.983f5c2d.chunk.js.map",
+    "runtime-main.js": "/SpeedyBats/static/js/runtime-main.7320136c.js",
+    "runtime-main.js.map": "/SpeedyBats/static/js/runtime-main.7320136c.js.map",
+    "static/js/2.331b78c9.chunk.js": "/SpeedyBats/static/js/2.331b78c9.chunk.js",
+    "static/js/2.331b78c9.chunk.js.map": "/SpeedyBats/static/js/2.331b78c9.chunk.js.map",
+    "index.html": "/SpeedyBats/index.html",
+    "static/css/main.69c9f618.chunk.css.map": "/SpeedyBats/static/css/main.69c9f618.chunk.css.map",
+    "static/js/2.331b78c9.chunk.js.LICENSE.txt": "/SpeedyBats/static/js/2.331b78c9.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/SpeedyBats/static/media/bats.0f4a5095.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7320136c.js",
+    "static/js/2.331b78c9.chunk.js",
+    "static/css/main.69c9f618.chunk.css",
+    "static/js/main.983f5c2d.chunk.js"
+  ]
+}
