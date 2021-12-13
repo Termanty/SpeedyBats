@@ -125,7 +125,7 @@ class App extends Component {
   onSubmitHandler = (event) => {
     event.preventDefault();
     this.addResultToDB();
-    this.resetGame();
+    this.continueBtnHandler();
   };
 
   onChange = (e) => this.setState({ name: e.target.value });
@@ -140,6 +140,7 @@ class App extends Component {
         <Controls
           startHandler={this.startHandler}
           stopHandler={this.stopHandler}
+          running={this.state.running}
         />
 
         {this.state.showPopUp && (

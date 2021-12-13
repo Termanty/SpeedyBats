@@ -1,11 +1,11 @@
 import React from "react";
 
-const GameOver = ({ handler, score, results, submit, name, change }) => {
+const GameOver = ({ handler, score, submit, name, change }) => {
   return (
     <div>
       <div className="overlay"></div>
       <div className="game-over">
-        <h2>GAME OVER</h2>
+        <h2 className="game-over-h2">GAME OVER</h2>
         <p>Your score was: {score}</p>
         <form onSubmit={submit}>
           <label htmlFor="name">Your nickname </label>
