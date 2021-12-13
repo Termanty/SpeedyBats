@@ -3,8 +3,11 @@ import GameOver from "./components/GameOver";
 import SpeedButtons from "./components/SpeedButtons";
 import Controls from "./components/Controls";
 import Stats from "./components/Stats";
+import bg from "./bg.mp3";
 import { db } from "./firebase";
 import { collection, getDocs, addDoc, Timestamp } from "firebase/firestore";
+
+let gameRunnigSound = new Audio(bg);
 
 class App extends Component {
   state = {
@@ -22,6 +25,7 @@ class App extends Component {
 
   gameOver = () => {
     if (this.clickID) clearTimeout(this.clickID);
+    gameRunnigSound.pause();
     this.setState({ running: false, showPopUp: "showGameOver" });
   };
 
@@ -66,15 +70,18 @@ class App extends Component {
   startHandler = () => {
     if (this.state.running) return;
     this.setState({ running: true });
+    gameRunnigSound.currentTime = 0;
     this.clickID = setTimeout(() => {
       this.gameOver();
     }, 4000);
     setTimeout(() => {
+      gameRunnigSound.play();
       this.run(1000);
-    }, 1000);
+    }, 500);
   };
 
   stopHandler = () => {
+    gameRunnigSound.pause();
     this.resetGame();
   };
 

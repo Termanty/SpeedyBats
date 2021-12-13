@@ -170,4 +170,5 @@ td {
 .hide {
   background: rgb(0, 97, 0);
   pointer-events: none;
+  color: rgb(24, 182, 0);
 }
