@@ -57,14 +57,14 @@ class App extends Component {
     });
     console.log(btn);
     console.log(this.state);
-    delay = delay * 0.9;
+    delay = delay * 0.97;
     setTimeout(
       () => this.setState({ active: this.setActive(btn, false) }),
       delay * 1.8
     );
     setTimeout(() => {
       this.run(delay, btn);
-    }, 1000);
+    }, delay);
   };
 
   startHandler = () => {
