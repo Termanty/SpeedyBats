@@ -47,6 +47,7 @@ class App extends Component {
 
   run = (delay, prevBtn = 0) => {
     if (!this.state.running) return;
+
     let btn;
     do {
       btn = Math.floor(Math.random() * 4);
@@ -55,8 +56,7 @@ class App extends Component {
       moves: this.state.moves.concat([btn]),
       active: this.setActive(btn, true),
     });
-    console.log(btn);
-    console.log(this.state);
+
     delay = delay * 0.97;
     setTimeout(
       () => this.setState({ active: this.setActive(btn, false) }),
