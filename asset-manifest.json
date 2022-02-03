@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SpeedyBats/static/css/main.e0bec46a.chunk.css",
-    "main.js": "/SpeedyBats/static/js/main.ead257f6.chunk.js",
-    "main.js.map": "/SpeedyBats/static/js/main.ead257f6.chunk.js.map",
+    "main.js": "/SpeedyBats/static/js/main.a0f0bd2a.chunk.js",
+    "main.js.map": "/SpeedyBats/static/js/main.a0f0bd2a.chunk.js.map",
     "runtime-main.js": "/SpeedyBats/static/js/runtime-main.7320136c.js",
     "runtime-main.js.map": "/SpeedyBats/static/js/runtime-main.7320136c.js.map",
     "static/js/2.331b78c9.chunk.js": "/SpeedyBats/static/js/2.331b78c9.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.7320136c.js",
     "static/js/2.331b78c9.chunk.js",
     "static/css/main.e0bec46a.chunk.css",
-    "static/js/main.ead257f6.chunk.js"
+    "static/js/main.a0f0bd2a.chunk.js"
   ]
 }
